@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Page from '../views/Page.vue'
+import Maps from '../views/Maps.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/page',
     name: 'Page',
     component: Page
+  },
+  {
+    path: '/maps',
+    name: 'Maps',
+    component: Maps
   }
 ]
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-   <router-view />
+    <router-view />
   </div>
 </template>
 
@@ -8,8 +8,7 @@
 export default {
   name: 'LayoutDefault',
 
-  components: {
-  },
+  components: {},
 
   data () {
     return {
