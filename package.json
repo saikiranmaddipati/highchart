@@ -11,6 +11,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^2.0.8",
+    "@highcharts/map-collection": "^2.0.1",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "highcharts": "^10.3.1",

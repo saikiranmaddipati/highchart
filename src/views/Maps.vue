@@ -14,7 +14,7 @@
       <hr />
       <div>
         <div id="container" style="width: 100%; height: 400px">
-          <highcharts :options="chartOptions1"></highcharts>
+          <highcharts :constructor-type="'mapChart'" :options="chartOptions"></highcharts>
         </div>
       </div>
     </div>
