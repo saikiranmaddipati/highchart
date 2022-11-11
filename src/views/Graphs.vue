@@ -29,13 +29,13 @@
 
           <q-tab-panel name="Care Density Quantile">
             <div id="container" style="width: 100%; height: 400px">
-              <highcharts :options="chartOptions1"></highcharts>
+              <highcharts :options="chartOptions11"></highcharts>
             </div>
           </q-tab-panel>
 
           <q-tab-panel name="Care Coordination Risk">
             <div id="container" style="width: 100%; height: 400px">
-              <highcharts :options="chartOptions1"></highcharts>
+              <highcharts :options="chartOptions12"></highcharts>
             </div>
           </q-tab-panel>
         </q-tab-panels>
@@ -552,6 +552,122 @@ export default {
             name: '30 Day Unplanned Readmissions Count',
             color: '#36078d',
             data: [28, 2, 1]
+          }
+        ]
+      },
+      chartOptions11: {
+        chart: {
+          renderTo: 'container',
+          type: 'pie'
+        },
+        title: {
+          text: 'Care Density Quantile'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b> ({point.percentage:.1f} %)'
+            }
+          }
+        },
+        series: [
+          {
+            name: 'Browsers',
+            data: [
+              {
+                name: 'Low',
+                y: 48.0,
+                color: '#093fbd'
+              },
+              {
+                name: 'Mid',
+                y: 36.0,
+                color: '#205be6'
+              },
+              {
+                name: 'Top',
+                y: 16.0,
+                color: '#386eeb'
+              }
+            ],
+            size: '80%',
+            innerSize: '50%',
+            dataLabels: {
+              enabled: true
+            },
+            dataSorting: {
+              enabled: true,
+              matchByName: true
+            }
+          }
+        ]
+      },
+      chartOptions12: {
+        chart: {
+          renderTo: 'container',
+          type: 'pie'
+        },
+        title: {
+          text: 'Care Coordination Risk'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b> ({point.percentage:.1f} %)'
+            }
+          }
+        },
+        series: [
+          {
+            name: 'Browsers',
+            data: [
+              {
+                name: 'Will possibly expericence coordination issues',
+                y: 3.0,
+                color: '#093fbd'
+              },
+              {
+                name: 'Will likely experience coordination issues',
+                y: 96.0,
+                color: '#205be6'
+              },
+              {
+                name: 'Unlikely to experience coordination issues',
+                y: 1.0,
+                color: '#386eeb'
+              }
+            ],
+            size: '80%',
+            innerSize: '50%',
+            dataLabels: {
+              enabled: true
+            },
+            dataSorting: {
+              enabled: true,
+              matchByName: true
+            }
           }
         ]
       }
