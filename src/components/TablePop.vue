@@ -1,21 +1,30 @@
 <template>
   <div>
     <div class="q-pa-sm">
+      <q-dialog v-model="openIHCDialogBox">
       <q-table
         title="Treats"
         :data="data"
         :columns="columns"
         row-key="name"
       ></q-table>
+      </q-dialog>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TableData',
+  name: 'TablePop',
+  props: {
+    isOpenIHCDialogBox: {
+      type: Boolean,
+      required: true
+    }
+  },
   data () {
     return {
+      openIHCDialogBox: this.isOpenIHCDialogBox,
       columns: [
         {
           name: 'name',

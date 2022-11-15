@@ -178,13 +178,19 @@
         </q-card>
       </div>
     </div>
+    <TablePop :isOpenIHCDialogBox="openIHCDialogBox" />
   </div>
 </template>
 
 <script>
+import TablePop from '../components/TablePop.vue'
 export default {
+  components: {
+    TablePop
+  },
   data () {
     return {
+      openIHCDialogBox: false,
       tab: 'Resource Utilization - stratification',
       tab1: 'Inpatient Hospitalization Count',
       tab2: 'Unique Provider Count',
@@ -295,7 +301,15 @@ export default {
           {
             name: 'Inpatient Hospitalization Count',
             color: '#36078d',
-            data: [13675, 540, 95, 22, 3, 1]
+            data: [13675, 540, 95, 22, 3, 1],
+            point: {
+              events: {
+                click: function () {
+                  console.log('hi')
+                  this.openDialogBox()
+                }
+              }
+            }
           }
         ]
       },
@@ -672,6 +686,15 @@ export default {
         ]
       }
     }
+  },
+  methods: {
+    openDialogBox () {
+      console.log('h')
+      this.openIHCDialogBox = true
+    }
+  },
+  mounted () {
+    this.openDialogBox()
   }
 }
 </script>
