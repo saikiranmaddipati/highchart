@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Page from '../views/Page.vue'
 import Maps from '../views/Maps.vue'
 import Graphs from '../views/Graphs.vue'
+import RsTab from '../components/RsTab.vue'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/graphs',
     name: 'Graphs',
     component: Graphs
+  },
+  {
+    path: '/graphs/rs',
+    name: 'GraphsRs',
+    component: RsTab
   }
 ]
 

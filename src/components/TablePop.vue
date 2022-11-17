@@ -1,13 +1,35 @@
 <template>
   <div>
     <div class="q-pa-sm">
-      <q-dialog v-model="openIHCDialogBox">
-      <q-table
-        title="Treats"
-        :data="data"
-        :columns="columns"
-        row-key="name"
-      ></q-table>
+      <q-dialog persistent v-model="openIHCDialogBox">
+        <q-card>
+          <q-card-section>
+            <q-table
+              title="Treats"
+              :data="data"
+              :columns="columns"
+              row-key="name"
+            ></q-table>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn flat label="Close" color="primary" @click="closeModel" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+      <q-dialog persistent v-model="openUPCDialogBox">
+        <q-card>
+          <q-card-section>
+            <q-table
+              title="Treats"
+              :data="data"
+              :columns="columns"
+              row-key="name"
+            ></q-table>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn flat label="Close" color="primary" @click="closeModel" />
+          </q-card-actions>
+        </q-card>
       </q-dialog>
     </div>
   </div>
@@ -20,11 +42,15 @@ export default {
     isOpenIHCDialogBox: {
       type: Boolean,
       required: true
+    },
+    isopenUPCDialogBox: {
+      type: Boolean
     }
   },
   data () {
     return {
       openIHCDialogBox: this.isOpenIHCDialogBox,
+      openUPCDialogBox: this.isopenUPCDialogBox,
       columns: [
         {
           name: 'name',
@@ -145,6 +171,19 @@ export default {
           iron: '6%'
         }
       ]
+    }
+  },
+  methods: {
+    closeModel () {
+      this.$emit('closeDialogBox')
+    }
+  },
+  watch: {
+    isOpenIHCDialogBox: function (newVal, _oldVal) {
+      this.openIHCDialogBox = newVal
+    },
+    isopenUPCDialogBox: function (newVal, _oldVal) {
+      this.openUPCDialogBox = newVal
     }
   }
 }
