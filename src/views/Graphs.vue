@@ -11,21 +11,21 @@
           align="justify"
         >
           <q-tab
-            name="Resource Utilization - stratification"
+            name="ResourceUtilizationstratification"
             label="Resource Utilization - stratification"
           />
-          <q-tab name="Care Density Quantile" label="Care Density Quantile" />
-          <q-tab name="Care Coordination Risk" label="Care Coordination Risk" />
+          <q-tab name="CareDensityQuantile" label="Care Density Quantile" @click="getValue()"/>
+          <q-tab name="CareCoordinationRisk" label="Care Coordination Risk" />
         </q-tabs>
 
         <q-separator />
 
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="Resource Utilization - stratification">
+          <q-tab-panel name="ResourceUtilizationstratification">
             <rs-tab />
           </q-tab-panel>
 
-          <q-tab-panel name="Care Density Quantile">
+          <q-tab-panel name="CareDensityQuantile">
             <div id="container" style="width: 100%; height: 400px">
               <highcharts :options="chartOptions11"></highcharts>
             </div>
@@ -194,10 +194,11 @@ export default {
     return {
       isOpenIHCDialogBox: false,
       isopenUPCDialogBox: false,
-      tab: 'Resource Utilization - stratification',
+      tab: 'ResourceUtilizationstratification',
       tab1: 'Inpatient Hospitalization Count',
       tab2: 'Unique Provider Count',
       tab3: 'Unplanned Inpatient Hospitalizations',
+      tabName: '',
       chartOptions2: {
         chart: {
           type: 'column'
@@ -628,6 +629,10 @@ export default {
     },
     openDialogBoxUpc () {
       this.isopenUPCDialogBox = true
+    },
+    getValue () {
+      // this.tabName = this.chartOptions11.title
+      this.$router.push({ query: { tab1: this.tab } })
     }
   }
 }
