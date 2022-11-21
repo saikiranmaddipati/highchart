@@ -9,12 +9,13 @@
           active-color="primary"
           indicator-color="primary"
           align="justify"
+          @click="getRouteTab(tab)"
         >
           <q-tab
             name="ResourceUtilizationstratification"
             label="Resource Utilization - stratification"
           />
-          <q-tab name="CareDensityQuantile" label="Care Density Quantile" @click="getValue()"/>
+          <q-tab name="CareDensityQuantile" label="Care Density Quantile" />
           <q-tab name="CareCoordinationRisk" label="Care Coordination Risk" />
         </q-tabs>
 
@@ -31,7 +32,7 @@
             </div>
           </q-tab-panel>
 
-          <q-tab-panel name="Care Coordination Risk">
+          <q-tab-panel name="CareCoordinationRisk">
             <div id="container" style="width: 100%; height: 400px">
               <highcharts :options="chartOptions12"></highcharts>
             </div>
@@ -630,9 +631,26 @@ export default {
     openDialogBoxUpc () {
       this.isopenUPCDialogBox = true
     },
-    getValue () {
-      // this.tabName = this.chartOptions11.title
-      this.$router.push({ query: { tab1: this.tab } })
+    getRouteTab (tab) {
+      this.$router.push({ query: { tab: tab } })
+    },
+    getRoute () {
+      if (!this.$route.fullPath.includes('?')) {
+        this.tab = 'ResourceUtilizationstratification'
+      } else {
+        this.tab = this.$route.query.tab
+      }
+    }
+  },
+  watch: {
+    $route () {
+      this.getRoute()
+    }
+  },
+  mounted () {
+    window.onload = () => {
+      console.log(this.$route.query.tab)
+      this.tab = this.$route.query.tab ? this.$route.query.tab : 'ResourceUtilizationstratification'
     }
   }
 }
